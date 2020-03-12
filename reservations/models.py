@@ -1,4 +1,5 @@
 from django.db import models
+from .validators import validate_reservation_date_bigger_than_yesterday
 
 
 class ClientModel(models.Model):
@@ -12,8 +13,8 @@ class ClientModel(models.Model):
 
 class ReservationModel(models.Model):
     number = models.IntegerField(unique=True)
-    arrival = models.DateField()
-    departure = models.DateField()
+    arrival = models.DateField(validators=[validate_reservation_date_bigger_than_yesterday])
+    departure = models.DateField(validators=[validate_reservation_date_bigger_than_yesterday])
     client_room = models.IntegerField()
     client = models.ForeignKey('ClientModel', on_delete=models.CASCADE)
     STATUS_CHOICES = (

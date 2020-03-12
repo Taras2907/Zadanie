@@ -47,9 +47,9 @@
                         {{ reservation.client }}
                     </div>
                     <div class="col-1">
-                        <a href="{% url 'reservation-update' reservation.id %}">
+                        <a href="{% url 'reservation-detail' reservation.id %}">
                             <button class="btn-success">
-                                update task
+                               more details
                             </button>
                         </a>
 
@@ -69,8 +69,11 @@
                         </button>
                     </a></span>
                     </li>
+                    <li class="text-center mx-1">
+                    {% else %}
+                    <li class="text-right mx-1 w-50">
                 {% endif %}
-                <li class="text-center mx-1">
+
                     <span class="px-1">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.</span>
                 </li>
                 {% if page_obj.has_next %}

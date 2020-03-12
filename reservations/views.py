@@ -24,5 +24,11 @@ class ReservationUpdateView(generic.UpdateView):
     template_name = 'reservations/reservation_form.html'
     model = ReservationModel
 
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object()
+
+        return super().post(request, *args, **kwargs)
+
     def get_success_url(self):
         return reverse('reservation-detail', kwargs={'pk': self.object.pk})
+        # return reverse('reservations-list')

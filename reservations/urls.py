@@ -1,5 +1,5 @@
 from django.urls import path, include
-from .views import ReservationsListView, ReservationRetrieveView, ReservationUpdateView
+from .views import ReservationsListView, ReservationUpdateView ,ReservationRetrieveView
 
 urlpatterns = [
     path("", ReservationsListView.as_view(), name="reservations-list"),
