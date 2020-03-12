@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <div class="container mt-5">
+
+        <div class="row no-gutters text-center  border rounded bg-success">
+            <div class="col-2 text-light">
+                Reservation number
+            </div>
+            <div class="col-2 text-light">
+                Arrival
+            </div>
+            <div class="col-2 text-light">
+                Departure
+            </div>
+            <div class="col-1 text-light">
+                Client Room
+            </div>
+            <div class="col-1 text-light">
+                Status
+            </div>
+            <div class="col-2 text-light">
+                Client name
+            </div>
+        </div>
+        <div class="row no-gutters text-center border rounded">
+            <div class="col-2 border rounded">
+                {{ reservation.number }}
+            </div>
+            <div class="col-2 border rounded">
+                {{ reservation.arrival }}
+            </div>
+            <div class="col-2 border rounded">
+                {{ reservation.departure }}
+            </div>
+
+            <div class="col-1 border rounded">
+                {{ reservation.client_room }}
+            </div>
+            <div class="col-2 border rounded">
+                {{ reservation.status }}
+            </div>
+            <div class="col-2 border rounded">
+                {{ reservation.client }}
+            </div>
+            <div class="col-1">
+                <a href="{% url 'reservation-update' reservation.id %}">
+                    <button class="btn-success">
+                        update task
+                    </button>
+                </a>
+
+
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

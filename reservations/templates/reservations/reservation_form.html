@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <div class="row">
+        <div class="panel panel-default mx-auto mt-5">
+                <div class="panel-body">
+
+                    <form class="form-horizontal" action="" method="POST" >
+                        {% csrf_token %}
+                        {% include 'reservations/form_template.html' %}
+                        <div class="form-group">
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-success w-100" >submit</button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+
+            </div>
+
+    </div>
+
+{% endblock %}

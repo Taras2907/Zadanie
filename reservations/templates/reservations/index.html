@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% block body %}
+
+    <div class="container h-100 group-btn justify-content-right align-self-center mt-1">
+        <div class="container">
+
+            <div class="row no-gutters text-center  border rounded bg-success">
+                <div class="col-2 text-light">
+                    Reservation number
+                </div>
+                <div class="col-2 text-light">
+                    Arrival
+                </div>
+                <div class="col-2 text-light">
+                    Departure
+                </div>
+                <div class="col-1 text-light">
+                    Client Room
+                </div>
+                <div class="col-2 text-light">
+                    Status
+                </div>
+                <div class="col-2 text-light">
+                    Client name
+                </div>
+            </div>
+            {% for reservation in reservations %}
+
+                <div class="row no-gutters text-center border rounded">
+                    <div class="col-2 border rounded">
+                        {{ reservation.number }}
+                    </div>
+                    <div class="col-2 border rounded">
+                        {{ reservation.arrival }}
+                    </div>
+                    <div class="col-2 border rounded">
+                        {{ reservation.departure }}
+                    </div>
+
+                    <div class="col-1 border rounded">
+                        {{ reservation.client_room }}
+                    </div>
+                    <div class="col-2 border rounded">
+                        {{ reservation.status }}
+                    </div>
+                    <div class="col-2 border rounded">
+                        {{ reservation.client }}
+                    </div>
+                    <div class="col-1">
+                        <a href="{% url 'reservation-update' reservation.id %}">
+                            <button class="btn-success">
+                                update task
+                            </button>
+                        </a>
+
+
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
+       <div class="align-center">
+            <ul class="pagination mt-1 px-12">
+                {% if page_obj.has_previous %}
+                    <li class="w-50 text-right">
+                    <span><a href="?page={{ page_obj.previous_page_number }}">
+                        <button class="btn-success">
+                            Previous
+                        </button>
+                    </a></span>
+                    </li>
+                {% endif %}
+                <li class="text-center mx-1">
+                    <span class="px-1">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.</span>
+                </li>
+                {% if page_obj.has_next %}
+                    <li class="w-25">
+                    <span class="btn-success"><a href="?page={{ page_obj.next_page_number }}">
+                        <button class="btn-success">
+                            Next
+                        </button>
+                    </a></span>
+                    </li>
+                {% endif %}
+        </ul>
+       </div>
+
+    </div>
+
+{% endblock %}
