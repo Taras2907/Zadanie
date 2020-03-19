@@ -3,7 +3,7 @@ from .validators import validate_reservation_date_bigger_than_yesterday
 
 
 class ClientModel(models.Model):
-    name = models.CharField(max_length=70)
+    name = models.CharField(max_length=70, null=True)
     phone = models.CharField(max_length=35)
     email = models.EmailField()
 
@@ -15,7 +15,7 @@ class ReservationModel(models.Model):
     number = models.IntegerField(unique=True)
     arrival = models.DateField(validators=[validate_reservation_date_bigger_than_yesterday])
     departure = models.DateField(validators=[validate_reservation_date_bigger_than_yesterday])
-    client_room = models.IntegerField()
+    no_of_people = models.IntegerField()
     client = models.ForeignKey('ClientModel', on_delete=models.CASCADE)
     STATUS_CHOICES = (
         ('NEW', 'NEW'),
